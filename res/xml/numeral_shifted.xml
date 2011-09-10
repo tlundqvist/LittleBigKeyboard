@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* 
+**
+** Copyright 2008, The Android Open Source Project
+** Copyright 2011, Thomas Lundqvist
+**
+** Licensed under the Apache License, Version 2.0 (the "License"); 
+** you may not use this file except in compliance with the License. 
+** You may obtain a copy of the License at 
+**
+**     http://www.apache.org/licenses/LICENSE-2.0 
+**
+** Unless required by applicable law or agreed to in writing, software 
+** distributed under the License is distributed on an "AS IS" BASIS, 
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+** See the License for the specific language governing permissions and 
+** limitations under the License.
+*/
+-->
+
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    android:keyWidth="19%p"
+    android:horizontalGap="1%p"
+    android:verticalGap="1%p"
+    android:keyHeight="@dimen/key_height"
+    >
+
+    <Row>
+        <Key android:codes="-99,-99,198,199,216" android:keyLabel="  ÆÇØ" android:keyEdgeFlags="left"/>
+        <Key android:codes="-99,8364,-99,-99,-99" android:keyLabel=" €   "/>
+        <Key android:codes="-99,171,-99,187,-99" android:keyLabel=" « » "/>
+        <Key android:codes="-99,-99,61,-99,-99" android:keyLabel="  =  "/>
+        <Key android:codes="-5" android:keyIcon="@drawable/sym_keyboard_delete"
+        		android:keyEdgeFlags="right" android:isRepeatable="true"/>
+    </Row>
+    
+    <Row>
+        <Key android:codes="43,-99,-99,59,42" android:keyLabel="+  ;*" 
+                android:keyEdgeFlags="left"/>
+        <Key android:codes="-99,-99,-99,-99,-99" android:keyLabel="     "/>
+        <Key android:codes="-99,-99,-99,-99,338" android:keyLabel="    Œ"/>
+        <Key android:codes="-99,-99,-99,208,222" android:keyLabel="   ÐÞ"/>
+        <Key android:codes="-99,-99,-99,-99,-99" android:keyLabel="     " android:keyEdgeFlags="right"/>
+    </Row>
+    
+    <Row android:rowEdgeFlags="bottom">
+        <Key android:codes="-1" android:keyIcon="@drawable/sym_keyboard_shift" 
+                android:keyWidth="21%p" android:isModifier="true"
+                android:isSticky="true" android:keyEdgeFlags="left"/>
+        <Key android:codes="-2" android:keyLabel="1" android:keyWidth="21%p"
+                android:isSticky="true" />
+        <Key android:codes="32" android:keyIcon="@drawable/sym_keyboard_space" 
+                android:keyWidth="31%p" android:isRepeatable="true"/>
+        <Key android:codes="10" android:keyIcon="@drawable/sym_keyboard_return" 
+                android:keyWidth="24%p" android:keyEdgeFlags="right"/>
+    </Row>
+</Keyboard>
+    
