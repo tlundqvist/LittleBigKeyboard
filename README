@@ -1,0 +1,54 @@
+LittleBigKeyboard for Android devices
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The LittleBigKeyboard is a virtual keyboard (an Android input method, IME)
+a user can install to replace the built in virtual keyboard.
+
+Features:
+
+- Made for small screens (or big finger): big buttons.
+
+- Small screen space occupied. Height is only 3 key-rows.
+
+- A fairly novel input technique: press key as normal for center letter or
+  press and move away from key to select side letters.
+
+- Letter placement optimized for a mix of English and Swedish language
+  input but layout includes most Western Europe letters.
+
+- Non-predictive. You always know what will happen when you press
+  something.
+
+- All letters repeat like a normal physical keyboard.
+
+INSTALLING
+~~~~~~~~~~
+
+1. Download and install the package from Android market or compile and
+   install yourself.
+
+2. Enable the new input method in "Settings", "Locale & text"
+   (Swedish: "Inställningar", "Nationella inställningar & text")
+
+3. Select the new input method by long pressing on any active input form
+   (pops up a menu where you can select different input methods).
+
+Bulding
+~~~~~~~
+
+The source code can be found on:
+
+The original code was compiled and built using for Eclipse.
+
+About author
+~~~~~~~~~~~~
+
+The original version was created by Thomas Lundqvist based on the
+example code (softkeyboard) included in the android development tools.
+The motivations were a lack of good big-key keyboards in the market and a
+wish to try out some new ideas (new type of input). The input technique is
+inspired by for example the Fat Fingers keyboard also found on the market.
+
+
+
+
