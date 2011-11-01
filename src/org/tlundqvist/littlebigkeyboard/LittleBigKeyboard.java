@@ -24,6 +24,7 @@ import android.view.View;
 import android.view.inputmethod.CompletionInfo;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +56,8 @@ public class LittleBigKeyboard extends InputMethodService
     
     private LatinKeyboard mCurKeyboard;
     
+    private static final String TAG = "LittleBigKeyboard";
+    
     /**
      * Main initialization of the input method component.  Be sure to call
      * to super class.
@@ -64,6 +67,7 @@ public class LittleBigKeyboard extends InputMethodService
         // Use the following line to debug IME service.
         if (DEBUG)
         	android.os.Debug.waitForDebugger();
+        Log.d(TAG, "onCreate()");
     }
     
     /**
@@ -95,6 +99,7 @@ public class LittleBigKeyboard extends InputMethodService
      * a configuration change.
      */
     @Override public View onCreateInputView() {
+        Log.d(TAG, "onCreateInputView()");
         mInputView = (ModKeyboardView) getLayoutInflater().inflate(
                 R.layout.input, null);
         mInputView.setOnKeyboardActionListener(this);
@@ -118,6 +123,7 @@ public class LittleBigKeyboard extends InputMethodService
      * about the target of our edits.
      */
     @Override public void onStartInput(EditorInfo attribute, boolean restarting) {
+        Log.d(TAG, "onStartInput()");
         super.onStartInput(attribute, restarting);
         
         // Reset our state.  We want to do this even if restarting, because
@@ -195,10 +201,12 @@ public class LittleBigKeyboard extends InputMethodService
     
     /**
      * Deal with the editor reporting movement of its cursor.
+     * Note: start can be larger than end (backwards)
      */
     @Override public void onUpdateSelection(int oldSelStart, int oldSelEnd,
             int newSelStart, int newSelEnd,
             int candidatesStart, int candidatesEnd) {
+        Log.d(TAG, "onUpdateSelection("+newSelStart+","+newSelEnd+")");
         super.onUpdateSelection(oldSelStart, oldSelEnd, newSelStart, newSelEnd,
                 candidatesStart, candidatesEnd);
         
