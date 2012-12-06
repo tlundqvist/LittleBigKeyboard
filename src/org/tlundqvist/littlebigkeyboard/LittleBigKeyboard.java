@@ -23,6 +23,8 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.CompletionInfo;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.ExtractedText;
+import android.view.inputmethod.ExtractedTextRequest;
 import android.view.inputmethod.InputConnection;
 import android.util.Log;
 
@@ -38,6 +40,7 @@ public class LittleBigKeyboard extends InputMethodService
         implements ModKeyboardView.OnKeyboardActionListener {
 	
     static final boolean DEBUG = false;
+//    static final boolean DEBUG = true;
     
     private ModKeyboardView mInputView;
     private CandidateView mCandidateView;
@@ -65,9 +68,10 @@ public class LittleBigKeyboard extends InputMethodService
     @Override public void onCreate() {
         super.onCreate();
         // Use the following line to debug IME service.
-        if (DEBUG)
+        if (DEBUG) {
         	android.os.Debug.waitForDebugger();
-        Log.d(TAG, "onCreate()");
+        	Log.d(TAG, "onCreate()");
+        }
     }
     
     /**
@@ -99,7 +103,9 @@ public class LittleBigKeyboard extends InputMethodService
      * a configuration change.
      */
     @Override public View onCreateInputView() {
-        Log.d(TAG, "onCreateInputView()");
+        if (DEBUG) {
+        	Log.d(TAG, "onCreateInputView()");
+        }
         mInputView = (ModKeyboardView) getLayoutInflater().inflate(
                 R.layout.input, null);
         mInputView.setOnKeyboardActionListener(this);
@@ -123,7 +129,9 @@ public class LittleBigKeyboard extends InputMethodService
      * about the target of our edits.
      */
     @Override public void onStartInput(EditorInfo attribute, boolean restarting) {
-        Log.d(TAG, "onStartInput()");
+        if (DEBUG) {
+        	Log.d(TAG, "onStartInput()");
+        }
         super.onStartInput(attribute, restarting);
         
         // Reset our state.  We want to do this even if restarting, because
@@ -206,9 +214,22 @@ public class LittleBigKeyboard extends InputMethodService
     @Override public void onUpdateSelection(int oldSelStart, int oldSelEnd,
             int newSelStart, int newSelEnd,
             int candidatesStart, int candidatesEnd) {
-        Log.d(TAG, "onUpdateSelection("+newSelStart+","+newSelEnd+")");
         super.onUpdateSelection(oldSelStart, oldSelEnd, newSelStart, newSelEnd,
                 candidatesStart, candidatesEnd);
+        
+        if (DEBUG) {
+	        Log.d(TAG, "onUpdateSelection(" + newSelStart + "," + newSelEnd + ")");
+	        InputConnection ic = getCurrentInputConnection();
+	        if (ic != null) {
+	            String text = "";
+	        	ExtractedTextRequest etr = new ExtractedTextRequest();
+	        	etr.hintMaxChars = 200;
+//	        	etr.hintMaxLines = 100;
+	            ExtractedText et = ic.getExtractedText(etr, 0);
+	            text = et.text.toString();
+	            Log.d(TAG, "Extracted text=" + text + "\nstartOffset=" + et.startOffset);
+	        }
+        }
         
         // If the current selection in the text view changes, we should
         // clear whatever candidate text we have.
